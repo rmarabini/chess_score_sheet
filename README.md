@@ -77,8 +77,9 @@ pdflatex your_scoresheet.tex
 
 ## Produce two copies in a single page (in linux systems)
 
-`pdfjam --nup 2x1 --landscape kk.pdf 1,1,1,1 --a4paper -o duplicated_page.pdf`
-`pdfjam --nup 2x1 --landscape kk.pdf 1,1 --a4paper -o duplicated_page_duplex.pdf`
+```
+pdfjam --nup 2x1 --landscape kk.pdf 1,1,1,1 --a4paper -o duplicated_page.pdf
+pdfjam --nup 2x1 --landscape kk.pdf 1,1 --a4paper -o duplicated_page_duplex.pdf```
 
 
 
