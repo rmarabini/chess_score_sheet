@@ -27,7 +27,7 @@ Install via your distribution’s package manager if missing.
 
 ## Quick Start
 
-   Either use the precompile pdf files  or execute
+   Either use the precompiled pdf files  or execute
 
 ```bash
 pdflatex your_scoresheet.tex
