@@ -1,0 +1,103 @@
+% form used by players to record the moves of a chess game during play
+\documentclass[15pt, a4paper]{scrartcl}
+\usepackage[margin=1.0cm]{geometry} 
+\usepackage{tabularx}
+\usepackage{tikz}
+\usepackage{arydshln} % dashed lines in tables
+\usepackage{amssymb}  % <-- provides \square, \blacksquare, \Box
+\usepackage{array}
+\usepackage{collcell}
+%\newcommand{\Baselower}[1]{\raisebox{-0.8ex}{#1}} % Define the lowering command
+%\newcolumntype{Xm}{>{\collectcell\Baselower}X<{\endcollectcell}} % New column type for 'X' columns
+%\newcolumntype{Pm}[1]{>{\Baselower}p{#1}} % New column type for 'p' columns
+%pdfjam --nup 2x1 --landscape kk.pdf 1,1,1,1 --a4paper -o duplicated_page.pdf
+
+\newcolumntype{Y}[1]{>{\raggedright\arraybackslash\hsize=#1\hsize}X}
+%\newcolumntype{Xm}{>{\collectcell\Baselower}X<{\endcollectcell}} % Adjusted X type
+
+\newcommand{\nRows}{30}
+\newcommand{\rise}[1]{\raisebox{-0.2ex}{#1}}
+\newcommand{\riseb}[1]{\raisebox{-0.2ex}{\textbf{#1}}}
+
+\makeatletter
+\newtoks\@tabtoks
+%%% assignments to \@tabtoks must be global, because they are done in \foreach
+\newcommand\addtabtoks[2][]{%
+  \if\relax\detokenize{#1}\relax
+    % no index, just append the second argument
+    \global\@tabtoks\expandafter{\the\@tabtoks#2}%
+  \else
+    % we assume the second argument is a one parameter macro
+    \global\@tabtoks\expandafter{\the\expandafter\@tabtoks\expandafter#2\expandafter{#1}}%
+  \fi
+}
+%%% variable should always be operated on always locally or always globally
+\newcommand*\resettabtoks{\global\@tabtoks{}}
+\newcommand*\printtabtoks{\the\@tabtoks}
+\makeatother
+
+% define a one parameter macro for making the row depending on the current index
+\newcommand{\tablerow}[1]{%
+\riseb{#1}&   &   &\riseb{\the\numexpr #1+\nRows\relax}&  &  \\\hline %\hdashline
+}
+
+
+\begin{document}
+\noindent
+\begin{tabularx}{\textwidth}{Y{0.20} Y{0.30} Y{0.50}} % Two columns for Logo (35%) and Text (65%)
+% Left column: Logo
+\includegraphics[height=0.15\textwidth]{logo.png} 
+& 
+&
+% Right column: Centered/formatted text
+\centering {\Large\vspace{-0.12\textwidth}\textbf{TOURNAMENT~NAME other~data~here\hspace{10cm} \textit{www.ticulis.es}}} \\
+\end{tabularx}
+\noindent
+\begin{tabularx}{\textwidth}{Y{0.75}Y{0.25}}
+%\hline
+\textbf{Event:}\dotfill  & \textbf{Round:}\dotfill  \\
+%\hline
+\textbf{Date:}\dotfill  & \textbf{Board:}\dotfill\\
+%\hline
+\end{tabularx}
+%\noindent
+\begin{tabularx}{\textwidth}{Y{0.5}Y{0.5}}
+%\hline
+\textbf{White:}\dotfill  & \textbf{Black:}\dotfill  \\
+\hline
+\end{tabularx}
+\resettabtoks
+\foreach \r in {1,...,\nRows}{%
+  \addtabtoks[\r]{\tablerow}%
+}
+%\noindent
+\begin{tabularx}{\textwidth}{%
+!{\vrule width 0.75pt}
+@{}>{\raggedleft}p{1.5em}|
+@{}>{\raggedright}X|
+@{}>{\raggedright}X!{\vrule width 0.75pt}
+@{}>{\raggedleft}p{1.5em}|
+@{}>{\raggedright}X|
+@{}>{\raggedright\arraybackslash}X!{\vrule width 0.75pt}
+%@{}
+}
+\multicolumn{1}{|l|}{\riseb{}} &
+\multicolumn{1}{|c|}{\riseb{White}} &
+\multicolumn{1}{|c|}{\riseb{Black}} &
+\multicolumn{1}{|l|}{\riseb{}} &
+\multicolumn{1}{|c|}{\riseb{White}} &
+\multicolumn{1}{|c|}{\riseb{Black}} \\\hline
+\printtabtoks
+\hline
+\multicolumn{6}{|l|}{\textbf{Result:} \quad
+$\square$ White won \hfill
+$\square$ Draw \hfill
+$\square$ Black won\hfill\ } \\
+\hline
+\multicolumn{3}{|l|}{\riseb{Signature:} } &
+\multicolumn{3}{l|}{\riseb{Signature:} } \\
+\multicolumn{3}{|l|}{} &
+\multicolumn{3}{l|}{} \\
+\hline
+\end{tabularx}
+\end{document}
