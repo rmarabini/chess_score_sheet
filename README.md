@@ -36,9 +36,9 @@ pdflatex your_scoresheet.tex
 
 ## Customization
 
-** change paper size from a4 to letter
+**change paper size from a4 to letter**
 
-\documentclass[15pt,letterpaper]{article}
+`\documentclass[15pt,letterpaper]{article}
 
 **Number of move rows**
 - Change `\newcommand{\nRows}{60}` to your desired count.
