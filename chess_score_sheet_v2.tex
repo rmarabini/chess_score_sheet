@@ -31,22 +31,28 @@
     \global\@tabtoks\expandafter{\the\expandafter\@tabtoks\expandafter#2\expandafter{#1}}%
   \fi
 }
-%%% variable should always be operated on always locally or always globally
+
+%%% variable should always be operated 
+%on always locally or always globally
 \newcommand*\resettabtoks{\global\@tabtoks{}}
 \newcommand*\printtabtoks{\the\@tabtoks}
 \makeatother
 
 % define a one parameter macro for making the row depending on the current index
+% \newcommand{\tablerow}[1]{%
+%    & % time
+%    & % white move
+%  \riseb{#1}& % move number
+%    & % black move
+%    & % time
+%    & % time
+%    & % white move
+%    \riseb{\the\numexpr #1+\nRows\relax} % move number
+%    & \\\hline %black, time
+% }
 \newcommand{\tablerow}[1]{%
-\riseb{#1} 
-&   
-&   
-&\riseb{\the\numexpr #1+\nRows\relax}
-&  
-&  \\\hline %\hdashline
+   & & \riseb{#1} & & & & & \riseb{\the\numexpr #1+\nRows\relax} & & \\\hline
 }
-
-
 \begin{document}
 \noindent
 \begin{tabularx}{\textwidth}{Y{0.20} Y{0.30} Y{0.50}} % Two columns for Logo (35%) and Text (65%)
@@ -76,34 +82,29 @@
   \addtabtoks[\r]{\tablerow}%
 }
 %\noindent
-\begin{tabularx}{\textwidth}{%
-!{\vrule width 0.75pt}
-@{}>{\raggedleft}p{1.5em}|
-@{}>{\raggedright}X|
-@{}>{\raggedright}X!{\vrule width 0.75pt}
-@{}>{\raggedleft}p{1.5em}|
-@{}>{\raggedright}X|
-@{}>{\raggedright\arraybackslash}X!{\vrule width 0.75pt}
-%@{}
-}
-\hline
-\multicolumn{1}{|c|}{\riseb{}} &
-\multicolumn{1}{c|}{\riseb{White}} &
-\multicolumn{1}{c!{\vrule width 0.75pt}}{\riseb{Black}} &
-\multicolumn{1}{c|}{\riseb{}} &
-\multicolumn{1}{c|}{\riseb{White}} &
-\multicolumn{1}{c|}{\riseb{Black}} \\\hline
-\printtabtoks
-\hline
-\multicolumn{6}{|l|}{\textbf{Result:} \quad
+\begin{tabularx}{\textwidth}{|p{2em}|X|p{1.5em}|X|p{2em}!{\vrule width 2pt}p{2em}|X|p{1.5em}|X|p{2.0em}|}
+  \hline
+  \multicolumn{1}{|c|}{\riseb{T}} &
+  \multicolumn{1}{c|}{\riseb{White}} &
+  \multicolumn{1}{c|}{} &
+  \multicolumn{1}{c|}{\riseb{Black}} &
+  \multicolumn{1}{c!{\vrule width 2pt}}{\riseb{T}} &
+  \multicolumn{1}{c|}{\riseb{T}} &
+  \multicolumn{1}{c|}{\riseb{White}} &
+  \multicolumn{1}{c|}{} &
+  \multicolumn{1}{c|}{\riseb{Black}} &
+  \multicolumn{1}{c|}{\riseb{T}} \\\hline
+  \printtabtoks
+  \hline
+\multicolumn{10}{|l|}{\textbf{Result:} \quad
 $\square$ White won \hfill
 $\square$ Draw \hfill
 $\square$ Black won\hfill\ } \\
 \hline
-\multicolumn{3}{|l|}{\riseb{Signature:} } &
-\multicolumn{3}{l|}{\riseb{Signature:} } \\
-\multicolumn{3}{|l|}{} &
-\multicolumn{3}{l|}{} \\
+\multicolumn{5}{|l|}{\riseb{Signature:} } &
+\multicolumn{5}{l|}{\riseb{Signature:} } \\
+\multicolumn{5}{|l|}{} &
+\multicolumn{5}{l|}{} \\
 \hline
 \end{tabularx}
 \end{document}
