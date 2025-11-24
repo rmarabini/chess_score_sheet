@@ -1,16 +1,13 @@
 # Chess Score Sheet (LaTeX)
 
 A printable chess score sheet built in LaTeX.
-It includes header fields (Event/Round, Date/Board, White/Black), a moves grid with two
-columns per move (White & Black), a result row with checkboxes, and signature blocks.
-
----
-
-## Features
+It includes header fields (Event/Round, Date/Board, White/Black), a two columns moves table, a result row with checkboxes, and signature blocks.
 
 ---
 
 ## Requirements
+
+You may use the pdf files or, if you want to modify it, you will need:
 
 - A LaTeX distribution (**TeX Live** / **MiKTeX**).
 - Packages:
@@ -41,7 +38,7 @@ pdflatex your_scoresheet.tex
 `\documentclass[15pt,letterpaper]{article}` 
 
 **Number of move rows**
-- Change `\newcommand{\nRows}{60}` to your desired count.
+- Change `\newcommand{\nRows}{30}` to your desired count.
 
 **Column alignment**
 - Center numeric columns (first & fourth) using `>{\centering\arraybackslash}p{2em}`.
@@ -63,11 +60,6 @@ pdflatex your_scoresheet.tex
 - With `arydshln`, use `:` for dashed verticals and `\hdashline` for dashed horizontals.
 
 ---
-
-## Troubleshooting
-
-**Undefined control sequence `\square`**
-- Load `amssymb` and use math mode: `\(\square\)`.
 
 
 
