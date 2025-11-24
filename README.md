@@ -59,6 +59,8 @@ pdflatex your_scoresheet.tex
 **Dashed rules (optional)**
 - With `arydshln`, use `:` for dashed verticals and `\hdashline` for dashed horizontals.
 
+**Change logo**
+- replace logo.pnb file
 ---
 
 
