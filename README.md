@@ -3,6 +3,10 @@
 A printable chess score sheet built in LaTeX.
 It includes header fields (Event/Round, Date/Board, White/Black), a two columns moves table, a result row with checkboxes, and signature blocks.
 
+-[example1](chess_score_sheet.pdf)
+-[example2](chess_score_sheet_v2.pdf)
+
+
 ---
 
 ## Requirements
