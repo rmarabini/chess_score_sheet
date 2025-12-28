@@ -5,6 +5,7 @@ It includes: logo, header fields (Event/Round, Date/Board, White/Black), a two c
 
 - [example1](chess_score_sheet.pdf)
 - [example2](chess_score_sheet_v2.pdf)
+- [example3](chess_score_sheet_v3.pdf)
 
 
 ---
